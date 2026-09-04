@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bedirhan İslami - Kur'an, dua, zikir, kıble ve İslami araçlar">
+<meta name="theme-color" content="#0b6b4f">
+<title>Bedirhan İslami</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f7f5;
+color:#17251f;
+}
+header{
+background:#0b6b4f;
+color:white;
+padding:22px 16px;
+text-align:center;
+}
+header h1{margin:0;font-size:28px}
+header p{margin:8px 0 0}
+nav{
+display:flex;
+overflow:auto;
+gap:8px;
+padding:10px;
+background:white;
+position:sticky;
+top:0;
+z-index:10;
+box-shadow:0 2px 8px #0001;
+}
+nav button{
+border:0;
+padding:10px 14px;
+border-radius:20px;
+background:#e8f1ed;
+color:#07553f;
+font-weight:bold;
+white-space:nowrap;
+}
+main{max-width:900px;margin:auto;padding:16px}
+.card{
+background:white;
+border-radius:18px;
+padding:18px;
+margin-bottom:15px;
+box-shadow:0 4px 15px #0000000d;
+}
+.card h2{margin-top:0;color:#0b6b4f}
+.btn{
+border:0;
+border-radius:12px;
+padding:12px 16px;
+background:#0b6b4f;
+color:white;
+font-weight:bold;
+margin:4px;
+}
+.btn.secondary{background:#e7eee9;color:#07553f}
+.page{display:none}
+.page.active{display:block}
+.big{
+font-size:42px;
+text-align:center;
+font-weight:bold;
+color:#0b6b4f;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:10px;
+}
+.tile{
+padding:18px;
+border-radius:15px;
+background:#edf5f1;
+text-align:center;
+cursor:pointer;
+}
+.tile strong{display:block;font-size:18px;margin-bottom:5px}
+input,textarea{
+width:100%;
+padding:12px;
+border:1px solid #ccd8d2;
+border-radius:10px;
+margin:7px 0;
+font-size:16px;
+}
+footer{text-align:center;padding:30px;color:#667}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🕌 Bedirhan İslami</h1>
+<p>Kur'an • Dua • Zikir • Kıble • İslami Bilgi</p>
+</header>
+
+<nav>
+<button onclick="showPage('home')">Ana Sayfa</button>
+<button onclick="showPage('quran')">📖 Kur'an</button>
+<button onclick="showPage('dua')">🤲 Dualar</button>
+<button onclick="showPage('zikir')">📿 Zikir</button>
+<button onclick="showPage('tools')">🧭 Araçlar</button>
+<button onclick="showPage('games')">🎮 Oyunlar</button>
+<button onclick="showPage('notes')">📝 Notlar</button>
+</nav>
+
+<main>
+
+<section id="home" class="page active">
+<div class="card">
+<h2>🌙 Hoş Geldin</h2>
+<p>Bedirhan İslami'ye hoş geldin. Buradan Kur'an, dualar, zikirler ve faydalı İslami araçlara ulaşabilirsin.</p>
+</div>
+
+<div class="grid">
+<div class="tile" onclick="showPage('quran')">
+<strong>📖 Kur'an</strong>
+Sureleri incele
+</div>
+
+<div class="tile" onclick="showPage('dua')">
+<strong>🤲 Dualar</strong>
+Günlük dualar
+</div>
+
+<div class="tile" onclick="showPage('zikir')">
+<strong>📿 Zikir</strong>
+Zikir sayacı
+</div>
+
+<div class="tile" onclick="showPage('tools')">
+<strong>🧭 Kıble</strong>
+Kıble yönünü bul
+</div>
+</div>
+
+<div class="card">
+<h2>🌟 Günün Sözü</h2>
+<p>“Kalpler ancak Allah'ı anmakla huzur bulur.”</p>
+</div>
+</section>
+
+<section id="quran" class="page">
+<div class="card">
+<h2>📖 Kur'an-ı Kerim</h2>
+<p>Kur'an-ı Kerim'deki 114 surenin isimleri:</p>
+<div id="surahs"></div>
+</div>
+</section>
+
+<section id="dua" class="page">
+<div class="card">
+<h2>🤲 Günlük Dualar</h2>
+
+<div class="card">
+<h3>Yemek Duası</h3>
+<p>Allah'ım, verdiğin nimetler için Sana hamd ederim.</p>
+</div>
+
+<div class="card">
+<h3>Uyku Öncesi</h3>
+<p>Allah'ım, beni ve sevdiklerimi koru. Huzurlu bir gece nasip et.</p>
+</div>
+
+<div class="card">
+<h3>Sabah Duası</h3>
+<p>Allah'ım, bugünümü hayırlı ve bereketli eyle.</p>
+</div>
+</div>
+</section>
+
+<section id="zikir" class="page">
+<div class="card">
+<h2>📿 Zikir Sayacı</h2>
+<div class="big" id="count">0</div>
+<button class="btn" onclick="increaseCount()">+ Zikir</button>
+<button class="btn secondary" onclick="resetCount()">Sıfırla</button>
+<p>Hedef:</p>
+<input id="target" type="number" value="33" min="1">
+</div>
+</section>
+
+<section id="tools" class="page">
+<div class="card">
+<h2>🧭 Kıble Yönü</h2>
+<p>Konum izni verirsen cihazının konumunu almayı deneyebilirsin.</p>
+<button class="btn" onclick="getLocation()">📍 Konumumu Bul</button>
+<div id="location">Henüz konum alınmadı.</div>
+</div>
+
+<div class="card">
+<h2>🕐 Namaz Vakitleri</h2>
+<p>Bu bölüm örnek vakitleri gösterir. Gerçek vakitler için güvenilir bir namaz vakti servisi kullanılmalıdır.</p>
+
+<div class="grid">
+<div class="tile"><strong>İmsak</strong>05:00</div>
+<div class="tile"><strong>Güneş</strong>06:30</div>
+<div class="tile"><strong>Öğle</strong>13:00</div>
+<div class="tile"><strong>İkindi</strong>16:45</div>
+<div class="tile"><strong>Akşam</strong>19:30</div>
+<div class="tile"><strong>Yatsı</strong>21:00</div>
+</div>
+</div>
+</section>
+
+<section id="games" class="page">
+<div class="card">
+<h2>🎮 İslami Bilgi Oyunu</h2>
+<p>İslam'ın şartı kaçtır?</p>
+
+<button class="btn" onclick="answer(5)">5</button>
+<button class="btn" onclick="answer(4)">4</button>
+<button class="btn" onclick="answer(6)">6</button>
+
+<div id="gameResult"></div>
+</div>
+</section>
+
+<section id="notes" class="page">
+<div class="card">
+<h2>📝 Kişisel Notlar</h2>
+
+<textarea id="note" rows="8" placeholder="Notunu buraya yaz..."></textarea>
+
+<button class="btn" onclick="saveNote()">💾 Kaydet</button>
+<button class="btn secondary" onclick="loadNote()">📂 Getir</button>
+
+<div id="noteResult"></div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<p>© 2026 Bedirhan İslami</p>
+<p>Allah hayırlı ve faydalı işler yapmayı nasip etsin. 🤲</p>
+</footer>
+
+<script>
+
+function showPage(id){
+var pages=document.querySelectorAll(".page");
+
+for(var i=0;i<pages.length;i++){
+pages[i].classList.remove("active");
+}
+
+var page=document.getElementById(id);
+
+if(page){
+page.classList.add("active");
+window.scrollTo(0,0);
+}
+}
+
+var count=0;
+
+function increaseCount(){
+count++;
+
+document.getElementById("count").textContent=count;
+
+localStorage.setItem("zikirCount",count);
+
+var target=parseInt(document.getElementById("target").value,10);
+
+if(target && count>=target){
+alert("🎉 Hedefine ulaştın!");
+}
+}
+
+function resetCount(){
+count=0;
+
+document.getElementById("count").textContent=count;
+
+localStorage.setItem("zikirCount",0);
+}
+
+function loadCount(){
+var saved=parseInt(localStorage.getItem("zikirCount"),10);
+
+if(!isNaN(saved)){
+count=saved;
+document.getElementById("count").textContent=count;
+}
+}
+
+function getLocation(){
+
+var box=document.getElementById("location");
+
+if(!navigator.geolocation){
+box.textContent="Bu cihazda konum özelliği desteklenmiyor.";
+return;
+}
+
+box.textContent="📍 Konum alınıyor...";
+
+navigator.geolocation.getCurrentPosition(
+
+function(position){
+
+var lat=position.coords.latitude.toFixed(5);
+var lon=position.coords.longitude.toFixed(5);
+
+box.innerHTML=
+"Enlem: <b>"+lat+"</b><br>"+
+"Boylam: <b>"+lon+"</b><br><br>"+
+"🕋 Kâbe koordinatları: 21.4225, 39.8262";
+
+},
+
+function(){
+box.textContent="Konum alınamadı. Tarayıcıdan konum izni vermeyi dene.";
+}
+
+);
+
+}
+
+function answer(value){
+
+var result=document.getElementById("gameResult");
+
+if(value===5){
+result.innerHTML="✅ Doğru cevap!";
+}else{
+result.innerHTML="❌ Yanlış cevap. Doğru cevap: 5";
+}
+
+}
+
+function saveNote(){
+
+var note=document.getElementById("note").value;
+
+localStorage.setItem("bedirhanIslamiiNote",note);
+
+document.getElementById("noteResult").textContent="✅ Not kaydedildi.";
+
+}
+
+function loadNote(){
+
+var note=localStorage.getItem("bedirhanIslamiiNote") || "";
+
+document.getElementById("note").value=note;
+
+document.getElementById("noteResult").textContent="📂 Not getirildi.";
+
+}
+
+var surahNames=[
+"Fatiha","Bakara","Âl-i İmrân","Nisâ","Mâide","En'âm","A'râf",
+"Enfâl","Tevbe","Yûnus","Hûd","Yûsuf","Ra'd","İbrâhîm","Hicr",
+"Nahl","İsrâ","Kehf","Meryem","Tâ-Hâ","Enbiyâ","Hac","Mü'minûn",
+"Nûr","Furkân","Şuarâ","Neml","Kasas","Ankebût","Rûm","Lokmân",
+"Secde","Ahzâb","Sebe","Fâtır","Yâsîn","Sâffât","Sâd","Zümer",
+"Mü'min","Fussilet","Şûrâ","Zuhruf","Duhân","Câsiye","Ahkâf",
+"Muhammed","Fetih","Hucurât","Kâf","Zâriyât","Tûr","Necm","Kamer",
+"Rahmân","Vâkıa","Hadîd","Mücâdele","Haşr","Mümtehine","Saf",
+"Cuma","Münâfikûn","Tegâbün","Talâk","Tahrîm","Mülk","Kalem",
+"Hâkka","Meâric","Nûh","Cin","Müzzemmil","Müddessir","Kıyâme",
+"İnsân","Mürselât","Nebe","Nâziât","Abese","Tekvîr","İnfitâr",
+"Mutaffifîn","İnşikâk","Burûc","Târık","A'lâ","Gâşiye","Fecr",
+"Beled","Şems","Leyl","Duhâ","İnşirâh","Tîn","Alak","Kadr",
+"Beyyine","Zilzâl","Âdiyât","Kâria","Tekâsür","Asr","Hümeze",
+"Fîl","Kureyş","Mâûn","Kevser","Kâfirûn","Nasr","Tebbet",
+"İhlâs","Felak","Nâs"
+];
+
+function createSurahs(){
+
+var box=document.getElementById("surahs");
+
+for(var i=0;i<surahNames.length;i++){
+
+var div=document.createElement("div");
+
+div.className="tile";
+
+div.style.marginBottom="8px";
+
+div.innerHTML=
+"<strong>"+(i+1)+". "+surahNames[i]+"</strong>";
+
+box.appendChild(div);
+
+}
+
+}
+
+window.onload=function(){
+
+createSurahs();
+
+loadCount();
+
+loadNote();
+
+};
+
+</script>
+
+</body>
+</html>
