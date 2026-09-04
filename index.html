@@ -2,24 +2,22 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bedirhan İslami - Kur'an, dua, zikir, kıble, takvim ve İslami araçlar">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Bedirhan İslami - Kur'an, Dua, Zikir, Kıble ve İslami araçlar">
 <meta name="theme-color" content="#087f5b">
 <title>Bedirhan İslami</title>
 
 <style>
 *{box-sizing:border-box}
-
 :root{
 --green:#087f5b;
---green2:#075c43;
+--darkgreen:#075c43;
 --bg:#f3f7f5;
---card:#ffffff;
+--card:#fff;
 --text:#17231e;
---muted:#65736d;
+--muted:#66736e;
 --border:#dce7e2;
 }
-
 body.dark{
 --bg:#111816;
 --card:#1b2521;
@@ -27,32 +25,20 @@ body.dark{
 --muted:#aebbb5;
 --border:#304039;
 }
-
 body{
 margin:0;
 font-family:Arial,sans-serif;
 background:var(--bg);
 color:var(--text);
-transition:.2s;
 }
-
 header{
-background:linear-gradient(135deg,var(--green2),var(--green));
+background:linear-gradient(135deg,var(--darkgreen),var(--green));
 color:white;
 padding:28px 16px;
 text-align:center;
 }
-
-header h1{
-margin:0;
-font-size:30px;
-}
-
-header p{
-margin:8px 0 0;
-opacity:.9;
-}
-
+header h1{margin:0;font-size:30px}
+header p{margin:8px 0 0}
 nav{
 display:flex;
 gap:8px;
@@ -61,34 +47,25 @@ padding:10px;
 background:var(--card);
 position:sticky;
 top:0;
-z-index:20;
+z-index:10;
 border-bottom:1px solid var(--border);
 }
-
 nav button{
 border:0;
 padding:10px 14px;
 border-radius:22px;
 background:#e8f2ee;
-color:var(--green2);
+color:var(--darkgreen);
 font-weight:bold;
 white-space:nowrap;
 }
-
 body.dark nav button{
 background:#293a33;
-color:#d9eee5;
+color:white;
 }
-
-main{
-max-width:950px;
-margin:auto;
-padding:16px;
-}
-
+main{max-width:950px;margin:auto;padding:16px}
 .page{display:none}
 .page.active{display:block}
-
 .card{
 background:var(--card);
 border:1px solid var(--border);
@@ -97,41 +74,21 @@ padding:18px;
 margin-bottom:16px;
 box-shadow:0 5px 18px #0000000b;
 }
-
-.card h2{
-margin-top:0;
-color:var(--green);
-}
-
+.card h2{margin-top:0;color:var(--green)}
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
 gap:10px;
 }
-
 .tile{
 background:#edf5f1;
 border-radius:15px;
-padding:17px;
+padding:18px;
 text-align:center;
 cursor:pointer;
-border:1px solid transparent;
 }
-
-body.dark .tile{
-background:#24332d;
-}
-
-.tile:hover{
-border-color:var(--green);
-}
-
-.tile strong{
-display:block;
-font-size:18px;
-margin-bottom:6px;
-}
-
+body.dark .tile{background:#24332d}
+.tile strong{display:block;font-size:18px;margin-bottom:6px}
 .btn{
 border:0;
 border-radius:12px;
@@ -142,18 +99,15 @@ font-weight:bold;
 margin:4px;
 cursor:pointer;
 }
-
 .btn.secondary{
 background:#e4eee9;
-color:var(--green2);
+color:var(--darkgreen);
 }
-
 body.dark .btn.secondary{
 background:#293a33;
 color:white;
 }
-
-input,textarea,select{
+input,textarea{
 width:100%;
 padding:12px;
 border:1px solid var(--border);
@@ -163,88 +117,81 @@ font-size:16px;
 background:var(--card);
 color:var(--text);
 }
-
 .big{
 font-size:55px;
 font-weight:bold;
 text-align:center;
 color:var(--green);
-padding:10px;
 }
-
 .center{text-align:center}
-
-.search{
-margin-bottom:15px;
-}
-
 .surah{
 display:flex;
-justify-content:space-between;
 align-items:center;
 gap:10px;
 padding:13px;
 border-bottom:1px solid var(--border);
 }
-
-.surah:last-child{border-bottom:0}
-
+.surahName{
+flex:1;
+cursor:pointer;
+}
+.surahName:hover{color:var(--green)}
 .favorite{
-font-size:22px;
+font-size:23px;
 border:0;
 background:none;
 cursor:pointer;
 }
-
-.stat{
-font-size:25px;
-font-weight:bold;
-color:var(--green);
+.arabic{
+font-size:27px;
+line-height:2.1;
+text-align:right;
+direction:rtl;
+font-family:serif;
+padding:10px 2px;
 }
-
+.ayah{
+border-bottom:1px solid var(--border);
+padding:15px 0;
+}
+.loading{
+text-align:center;
+padding:25px;
+color:var(--muted);
+}
+.error{
+padding:14px;
+background:#ffe9e7;
+color:#a21b12;
+border-radius:12px;
+}
+.success{
+color:var(--green);
+font-weight:bold;
+}
 .qibla{
 width:180px;
 height:180px;
 border:8px solid var(--green);
 border-radius:50%;
 margin:20px auto;
-position:relative;
 display:flex;
 align-items:center;
 justify-content:center;
 font-size:45px;
+position:relative;
 }
-
 .arrow{
 position:absolute;
-top:8px;
+top:5px;
 font-size:55px;
-transform-origin:50% 80%;
+transform-origin:50% 85%;
 }
-
-.notice{
-padding:12px;
-background:#fff7dc;
-border-radius:12px;
-color:#705800;
-margin-top:10px;
-}
-
-body.dark .notice{
-background:#3b331d;
-color:#f5e7a5;
-}
-
 footer{
 text-align:center;
 padding:30px;
 color:var(--muted);
 }
-
-.hidden{display:none}
-
-.success{color:#087f5b;font-weight:bold}
-.error{color:#b42318;font-weight:bold}
 </style>
 </head>
 
@@ -252,7 +199,7 @@ color:var(--muted);
 
 <header>
 <h1>🕌 Bedirhan İslami</h1>
-<p>Kur'an • Dua • Zikir • Kıble • Takvim • İslami Bilgi</p>
+<p>Kur'an • Dua • Zikir • Kıble • Takvim • Bilgi</p>
 </header>
 
 <nav>
@@ -269,279 +216,185 @@ color:var(--muted);
 
 <main>
 
-<!-- ANA SAYFA -->
 <section id="home" class="page active">
-
 <div class="card center">
 <h2>🌙 Hoş Geldin</h2>
-<p>Bedirhan İslami uygulamasına hoş geldin.</p>
+<p>Bedirhan İslami'ye hoş geldin.</p>
 <p id="today"></p>
 </div>
 
 <div class="grid">
-
 <div class="tile" onclick="showPage('quran')">
 <strong>📖 Kur'an</strong>
-114 sure
+114 Sure
 </div>
-
 <div class="tile" onclick="showPage('dua')">
 <strong>🤲 Dualar</strong>
 Günlük dualar
 </div>
-
 <div class="tile" onclick="showPage('zikir')">
 <strong>📿 Zikir</strong>
 Zikir sayacı
 </div>
-
 <div class="tile" onclick="showPage('qibla')">
 <strong>🧭 Kıble</strong>
 Kâbe yönü
 </div>
-
-<div class="tile" onclick="showPage('calendar')">
-<strong>📅 Takvim</strong>
-Hicri tarih
-</div>
-
-<div class="tile" onclick="showPage('games')">
-<strong>🎮 Oyun</strong>
-Bilgi yarışması
-</div>
-
 </div>
 
 <div class="card">
-<h2>🎯 Günlük Hedef</h2>
-<p>Bugünkü zikir hedefin:</p>
+<h2>🎯 Zikir Durumu</h2>
 <div class="stat" id="homeProgress">0 / 33</div>
-<div class="grid">
-<div>
-<p>⭐ Seviye</p>
-<div class="stat" id="level">1</div>
 </div>
-<div>
-<p>🔥 Seri</p>
-<div class="stat" id="streak">0</div>
-</div>
-</div>
-</div>
-
-<div class="card">
-<h2>🌟 Günün Hatırlatması</h2>
-<p>İyilik yapmak, güzel söz söylemek ve Allah'ı anmak güzel davranışlardandır.</p>
-</div>
-
 </section>
 
 
-<!-- KURAN -->
 <section id="quran" class="page">
 
-<div class="card">
+<div class="card" id="surahList">
+
 <h2>📖 Kur'an-ı Kerim</h2>
-<p>114 sure arasından arama yapabilirsin.</p>
+
+<p>
+Bir sureye dokunduğunda sure ve ayetleri internetten yüklenir.
+</p>
 
 <input
 id="surahSearch"
-class="search"
 placeholder="🔎 Sure ara..."
 oninput="searchSurahs()">
 
 <div id="surahs"></div>
+
+</div>
+
+<div class="card" id="surahReader" style="display:none">
+
+<button class="btn secondary" onclick="backToSurahs()">
+⬅️ Surelere Dön
+</button>
+
+<h2 id="readerTitle"></h2>
+
+<div id="readerContent"></div>
+
 </div>
 
 </section>
 
 
-<!-- DUALAR -->
 <section id="dua" class="page">
-
 <div class="card">
 <h2>🤲 Dualar</h2>
 
 <div class="card">
-<h3>🌅 Sabah</h3>
-<p>Allah'ım, bugünümü hayırlı, huzurlu ve bereketli eyle.</p>
+<h3>🌅 Sabah Duası</h3>
+<p>Allah'ım, bugünümü hayırlı ve bereketli eyle.</p>
 </div>
 
 <div class="card">
-<h3>🍽️ Yemek</h3>
+<h3>🌙 Uyku Duası</h3>
+<p>Allah'ım, beni ve sevdiklerimi koru ve huzurlu bir gece nasip et.</p>
+</div>
+
+<div class="card">
+<h3>🍽️ Yemek Duası</h3>
 <p>Allah'ım, verdiğin nimetler için Sana şükrederim.</p>
 </div>
 
 <div class="card">
-<h3>🌙 Uyku</h3>
-<p>Allah'ım, beni ve sevdiklerimi koru. Huzurlu bir gece nasip et.</p>
-</div>
-
-<div class="card">
-<h3>📚 Ders</h3>
+<h3>📚 Ders Duası</h3>
 <p>Allah'ım, bana faydalı ilim ve güzel bir anlayış nasip et.</p>
 </div>
 
-<div class="card">
-<h3>❤️ Aile</h3>
-<p>Allah'ım, ailemize sağlık, huzur, sevgi ve bereket ver.</p>
 </div>
-
-</div>
-
 </section>
 
 
-<!-- ZİKİR -->
 <section id="zikir" class="page">
-
 <div class="card center">
 <h2>📿 Zikir Sayacı</h2>
-
-<p>Hedefini belirle:</p>
 
 <input
 id="target"
 type="number"
-min="1"
 value="33"
-oninput="updateHome()">
+min="1"
+oninput="updateZikir()">
 
 <div class="big" id="count">0</div>
 
-<button class="btn" onclick="increaseCount()">+1 Zikir</button>
-<button class="btn" onclick="increaseBy10()">+10</button>
+<button class="btn" onclick="increaseCount()">+1</button>
+<button class="btn" onclick="increaseTen()">+10</button>
 <button class="btn secondary" onclick="resetCount()">Sıfırla</button>
 
 <p id="targetMessage"></p>
-
 </div>
-
-<div class="card">
-<h2>📊 İstatistik</h2>
-
-<div class="grid">
-
-<div class="tile">
-<strong id="totalZikir">0</strong>
-Toplam Zikir
-</div>
-
-<div class="tile">
-<strong id="level2">1</strong>
-Seviye
-</div>
-
-<div class="tile">
-<strong id="streak2">0</strong>
-Günlük Seri
-</div>
-
-</div>
-</div>
-
 </section>
 
 
-<!-- KIBLE -->
 <section id="qibla" class="page">
-
 <div class="card center">
 
-<h2>🧭 Gerçek Kıble Yönü</h2>
+<h2>🧭 Kıble Yönü</h2>
 
-<p>
-Konum izni verirsen bulunduğun yerden Kâbe'ye olan yön hesaplanır.
-</p>
+<p>Konum izni vererek Kâbe yönünü hesaplayabilirsin.</p>
 
-<button class="btn" onclick="findQibla()">📍 Kıbleyi Bul</button>
+<button class="btn" onclick="findQibla()">
+📍 Kıbleyi Bul
+</button>
 
 <div class="qibla">
-<span class="arrow" id="qiblaArrow">↑</span>
+<span id="qiblaArrow" class="arrow">↑</span>
 🕋
 </div>
 
-<div id="qiblaResult">
-Henüz konum alınmadı.
-</div>
+<p id="qiblaResult">Henüz konum alınmadı.</p>
 
 </div>
-
-<div class="card">
-<h2>🕋 Kâbe</h2>
-<p>Kâbe'nin yaklaşık koordinatları:</p>
-<p><b>21.4225° N, 39.8262° E</b></p>
-</div>
-
 </section>
 
 
-<!-- TAKVİM -->
 <section id="calendar" class="page">
-
 <div class="card center">
 <h2>📅 Takvim</h2>
-
-<div class="big" id="gregorianDate"></div>
-
-<h2 id="hijriDate">Hicri tarih hesaplanıyor...</h2>
-
-<p id="dayName"></p>
-
+<div class="big" id="gregorian"></div>
+<h2 id="hijri"></h2>
+<p id="day"></p>
 </div>
-
-<div class="card">
-<h2>ℹ️ Tarih Bilgisi</h2>
-<p>Hicri tarih, cihazının tarayıcısındaki İslami takvim desteği kullanılarak hesaplanmaya çalışılır.</p>
-</div>
-
 </section>
 
 
-<!-- OYUN -->
 <section id="games" class="page">
-
 <div class="card center">
-
 <h2>🎮 İslami Bilgi Oyunu</h2>
-
 <p id="question"></p>
-
 <div id="answers"></div>
-
 <p id="gameResult"></p>
-
 <button class="btn" onclick="newQuestion()">🔄 Yeni Soru</button>
-
 </div>
-
 </section>
 
 
-<!-- NOTLAR -->
 <section id="notes" class="page">
-
 <div class="card">
-<h2>📝 Kişisel Notlar</h2>
+<h2>📝 Notlar</h2>
 
 <textarea
 id="note"
 rows="10"
-placeholder="Notunu buraya yaz..."></textarea>
+placeholder="Notunu yaz..."></textarea>
 
 <button class="btn" onclick="saveNote()">💾 Kaydet</button>
 <button class="btn secondary" onclick="loadNote()">📂 Getir</button>
 
 <p id="noteResult"></p>
 </div>
-
 </section>
 
 
-<!-- AYARLAR -->
 <section id="settings" class="page">
-
 <div class="card">
-
 <h2>⚙️ Ayarlar</h2>
 
 <button class="btn" onclick="toggleDark()">
@@ -549,18 +402,10 @@ placeholder="Notunu buraya yaz..."></textarea>
 </button>
 
 <button class="btn secondary" onclick="clearData()">
-🗑️ Kayıtlı Verileri Temizle
+🗑️ Verileri Temizle
 </button>
 
 </div>
-
-<div class="card">
-<h2>ℹ️ Uygulama</h2>
-<p><b>Bedirhan İslami</b></p>
-<p>Kur'an, dua, zikir, kıble ve İslami bilgi araçları.</p>
-<p>Verilerin büyük bölümü cihazında saklanır.</p>
-</div>
-
 </section>
 
 </main>
@@ -573,7 +418,7 @@ placeholder="Notunu buraya yaz..."></textarea>
 
 <script>
 
-/* SAYFA GEÇİŞİ */
+/* SAYFA */
 
 function showPage(id){
 
@@ -583,12 +428,9 @@ for(var i=0;i<pages.length;i++){
 pages[i].classList.remove("active");
 }
 
-var page=document.getElementById(id);
+document.getElementById(id).classList.add("active");
 
-if(page){
-page.classList.add("active");
 window.scrollTo(0,0);
-}
 
 }
 
@@ -614,28 +456,29 @@ var surahNames=[
 "İhlâs","Felak","Nâs"
 ];
 
-function getFavorites(){
+function favorites(){
 
 try{
-return JSON.parse(localStorage.getItem("favorites") || "[]");
+return JSON.parse(localStorage.getItem("favorites")||"[]");
 }catch(e){
 return [];
 }
 
 }
 
-function toggleFavorite(index){
+function toggleFavorite(id){
 
-var fav=getFavorites();
-var pos=fav.indexOf(index);
+var f=favorites();
+var index=f.indexOf(id);
 
-if(pos===-1){
-fav.push(index);
+if(index===-1){
+f.push(id);
 }else{
-fav.splice(pos,1);
+f.splice(index,1);
 }
 
-localStorage.setItem("favorites",JSON.stringify(fav));
+localStorage.setItem("favorites",JSON.stringify(f));
+
 renderSurahs();
 
 }
@@ -644,13 +487,14 @@ function renderSurahs(){
 
 var box=document.getElementById("surahs");
 var search=document.getElementById("surahSearch").value.toLowerCase();
-var fav=getFavorites();
+var f=favorites();
 
 box.innerHTML="";
 
 for(var i=0;i<surahNames.length;i++){
 
-if(search && surahNames[i].toLowerCase().indexOf(search)===-1){
+if(search &&
+surahNames[i].toLowerCase().indexOf(search)===-1){
 continue;
 }
 
@@ -658,19 +502,28 @@ var row=document.createElement("div");
 row.className="surah";
 
 var name=document.createElement("div");
-name.innerHTML="<b>"+(i+1)+". "+surahNames[i]+"</b>";
+name.className="surahName";
+name.innerHTML="<b>"+(i+1)+". "+surahNames[i]+"</b><br><small>Sureyi açmak için dokun</small>";
 
-var button=document.createElement("button");
-button.className="favorite";
-button.textContent=fav.indexOf(i)!==-1 ? "⭐" : "☆";
-button.onclick=(function(x){
+name.onclick=(function(id){
 return function(){
-toggleFavorite(x);
+openSurah(id);
 };
-})(i);
+})(i+1);
+
+var fav=document.createElement("button");
+fav.className="favorite";
+fav.textContent=f.indexOf(i+1)!==-1?"⭐":"☆";
+
+fav.onclick=(function(id){
+return function(e){
+e.stopPropagation();
+toggleFavorite(id);
+};
+})(i+1);
 
 row.appendChild(name);
-row.appendChild(button);
+row.appendChild(fav);
 
 box.appendChild(row);
 
@@ -680,6 +533,78 @@ box.appendChild(row);
 
 function searchSurahs(){
 renderSurahs();
+}
+
+
+/* SURE OKUMA */
+
+function openSurah(id){
+
+document.getElementById("surahList").style.display="none";
+document.getElementById("surahReader").style.display="block";
+
+document.getElementById("readerTitle").textContent=
+"📖 "+id+". "+surahNames[id-1];
+
+document.getElementById("readerContent").innerHTML=
+"<div class='loading'>📖 Sure yükleniyor...</div>";
+
+fetch(
+"https://api.alquran.cloud/v1/surah/"+id+"/quran-uthmani"
+)
+
+.then(function(response){
+
+if(!response.ok){
+throw new Error("API hatası");
+}
+
+return response.json();
+
+})
+
+.then(function(data){
+
+var ayahs=data.data.ayahs;
+var html="";
+
+for(var i=0;i<ayahs.length;i++){
+
+html+=
+"<div class='ayah'>"+
+"<div class='arabic'>"+
+ayahs[i].text+
+" ﴿"+ayahs[i].numberInSurah+"﴾"+
+"</div>"+
+"</div>";
+
+}
+
+document.getElementById("readerContent").innerHTML=html;
+
+})
+
+.catch(function(){
+
+document.getElementById("readerContent").innerHTML=
+"<div class='error'>"+
+"❌ Sure yüklenemedi.<br><br>"+
+"İnternet bağlantını kontrol edip tekrar dene."+
+"</div>";
+
+});
+
+window.scrollTo(0,0);
+
+}
+
+function backToSurahs(){
+
+document.getElementById("surahReader").style.display="none";
+document.getElementById("surahList").style.display="block";
+
+window.scrollTo(0,0);
+
 }
 
 
@@ -695,12 +620,6 @@ if(!isNaN(saved)){
 count=saved;
 }
 
-var target=parseInt(localStorage.getItem("zikirTarget"),10);
-
-if(!isNaN(target) && target>0){
-document.getElementById("target").value=target;
-}
-
 updateZikir();
 
 }
@@ -713,7 +632,7 @@ saveZikir();
 
 }
 
-function increaseBy10(){
+function increaseTen(){
 
 count+=10;
 
@@ -725,19 +644,7 @@ function saveZikir(){
 
 localStorage.setItem("zikirCount",count);
 
-var target=parseInt(document.getElementById("target").value,10);
-
-if(!target || target<1){
-target=33;
-}
-
-localStorage.setItem("zikirTarget",target);
-
 updateZikir();
-
-if(count===target){
-alert("🎉 Zikir hedefini tamamladın!");
-}
 
 }
 
@@ -751,98 +658,29 @@ saveZikir();
 
 function updateZikir(){
 
+var target=parseInt(
+document.getElementById("target").value,
+10
+);
+
+if(!target||target<1){
+target=33;
+}
+
 document.getElementById("count").textContent=count;
 
-var target=parseInt(document.getElementById("target").value,10);
-
-if(!target || target<1){
-target=33;
-}
-
-var total=parseInt(localStorage.getItem("totalZikir"),10);
-
-if(isNaN(total)){
-total=0;
-}
-
-document.getElementById("totalZikir").textContent=total+count;
-
-var level=Math.floor((total+count)/100)+1;
-
-document.getElementById("level2").textContent=level;
-document.getElementById("level").textContent=level;
-
-var message="Hedef: "+count+" / "+target;
+document.getElementById("homeProgress").textContent=
+count+" / "+target;
 
 if(count>=target){
-message+="<br><span class='success'>✅ Hedef tamamlandı!</span>";
-}
 
-document.getElementById("targetMessage").innerHTML=message;
+document.getElementById("targetMessage").innerHTML=
+"<span class='success'>🎉 Hedef tamamlandı!</span>";
 
-updateHome();
+}else{
 
-}
-
-function updateHome(){
-
-var target=parseInt(document.getElementById("target").value,10);
-
-if(!target || target<1){
-target=33;
-}
-
-document.getElementById("homeProgress").textContent=count+" / "+target;
-
-}
-
-
-/* TARİH */
-
-function updateDate(){
-
-var now=new Date();
-
-var days=[
-"Pazar","Pazartesi","Salı","Çarşamba",
-"Perşembe","Cuma","Cumartesi"
-];
-
-var months=[
-"Ocak","Şubat","Mart","Nisan","Mayıs","Haziran",
-"Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"
-];
-
-var dateText=
-now.getDate()+" "+
-months[now.getMonth()]+" "+
-now.getFullYear();
-
-document.getElementById("today").textContent=dateText;
-
-document.getElementById("gregorianDate").textContent=dateText;
-
-document.getElementById("dayName").textContent=
-days[now.getDay()];
-
-try{
-
-var hijri=new Intl.DateTimeFormat(
-"tr-TR-u-ca-islamic",
-{
-day:"numeric",
-month:"long",
-year:"numeric"
-}
-).format(now);
-
-document.getElementById("hijriDate").textContent=
-"🌙 "+hijri;
-
-}catch(e){
-
-document.getElementById("hijriDate").textContent=
-"🌙 Hicri tarih tarayıcı tarafından desteklenmiyor.";
+document.getElementById("targetMessage").textContent=
+"Hedef: "+count+" / "+target;
 
 }
 
@@ -851,23 +689,22 @@ document.getElementById("hijriDate").textContent=
 
 /* KIBLE */
 
-var KAABA_LAT=21.4225;
-var KAABA_LON=39.8262;
+var kaabaLat=21.4225;
+var kaabaLon=39.8262;
 
-function toRad(x){
+function rad(x){
 return x*Math.PI/180;
 }
 
-function toDeg(x){
+function deg(x){
 return x*180/Math.PI;
 }
 
-function calculateBearing(lat1,lon1,lat2,lon2){
+function bearing(lat1,lon1,lat2,lon2){
 
-var p1=toRad(lat1);
-var p2=toRad(lat2);
-
-var dl=toRad(lon2-lon1);
+var p1=rad(lat1);
+var p2=rad(lat2);
+var dl=rad(lon2-lon1);
 
 var y=Math.sin(dl)*Math.cos(p2);
 
@@ -875,28 +712,7 @@ var x=
 Math.cos(p1)*Math.sin(p2)-
 Math.sin(p1)*Math.cos(p2)*Math.cos(dl);
 
-var bearing=toDeg(Math.atan2(y,x));
-
-return (bearing+360)%360;
-
-}
-
-function directionName(deg){
-
-var dirs=[
-"Kuzey",
-"Kuzeydoğu",
-"Doğu",
-"Güneydoğu",
-"Güney",
-"Güneybatı",
-"Batı",
-"Kuzeybatı"
-];
-
-var index=Math.round(deg/45)%8;
-
-return dirs[index];
+return (deg(Math.atan2(y,x))+360)%360;
 
 }
 
@@ -906,8 +722,8 @@ var result=document.getElementById("qiblaResult");
 
 if(!navigator.geolocation){
 
-result.innerHTML=
-"<span class='error'>Bu cihazda konum özelliği desteklenmiyor.</span>";
+result.textContent=
+"Bu cihaz konum özelliğini desteklemiyor.";
 
 return;
 
@@ -922,46 +738,79 @@ function(position){
 var lat=position.coords.latitude;
 var lon=position.coords.longitude;
 
-var bearing=calculateBearing(
+var b=bearing(
 lat,
 lon,
-KAABA_LAT,
-KAABA_LON
+kaabaLat,
+kaabaLon
 );
 
-var arrow=document.getElementById("qiblaArrow");
-
-arrow.style.transform=
-"rotate("+bearing+"deg)";
+document.getElementById("qiblaArrow").style.transform=
+"rotate("+b+"deg)";
 
 result.innerHTML=
 "🧭 Kıble açısı: <b>"+
-bearing.toFixed(1)+
-"°</b><br>"+
-"Yön: <b>"+
-directionName(bearing)+
-"</b><br><br>"+
-"📍 Konum: "+
-lat.toFixed(4)+
-", "+
-lon.toFixed(4);
+b.toFixed(1)+
+"°</b><br>📍 Konum bulundu.";
 
 },
 
 function(){
 
-result.innerHTML=
-"<span class='error'>Konum alınamadı. Tarayıcıdan konum izni vermeyi dene.</span>";
+result.textContent=
+"❌ Konum alınamadı. Tarayıcıdan konum izni ver.";
 
-},
-
-{
-enableHighAccuracy:true,
-timeout:10000,
-maximumAge:60000
 }
 
 );
+
+}
+
+
+/* TAKVİM */
+
+function updateDate(){
+
+var now=new Date();
+
+var months=[
+"Ocak","Şubat","Mart","Nisan","Mayıs","Haziran",
+"Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"
+];
+
+var days=[
+"Pazar","Pazartesi","Salı","Çarşamba",
+"Perşembe","Cuma","Cumartesi"
+];
+
+var text=
+now.getDate()+" "+
+months[now.getMonth()]+" "+
+now.getFullYear();
+
+document.getElementById("today").textContent=text;
+document.getElementById("gregorian").textContent=text;
+document.getElementById("day").textContent=days[now.getDay()];
+
+try{
+
+document.getElementById("hijri").textContent=
+"🌙 "+
+new Intl.DateTimeFormat(
+"tr-TR-u-ca-islamic",
+{
+day:"numeric",
+month:"long",
+year:"numeric"
+}
+).format(now);
+
+}catch(e){
+
+document.getElementById("hijri").textContent=
+"🌙 Hicri tarih desteklenmiyor.";
+
+}
 
 }
 
@@ -969,194 +818,123 @@ maximumAge:60000
 /* OYUN */
 
 var questions=[
-
-{
-q:"İslam'ın şartı kaçtır?",
-a:["4","5","6"],
-correct:1
-},
-
-{
-q:"Kur'an-ı Kerim kaç sureden oluşur?",
-a:["110","114","120"],
-correct:1
-},
-
-{
-q:"Günde kaç vakit namaz vardır?",
-a:["3","5","7"],
-correct:1
-},
-
-{
-q:"Kur'an-ı Kerim'in ilk suresi hangisidir?",
-a:["Fatiha","Bakara","İhlâs"],
-correct:0
-},
-
-{
-q:"Ramazan ayında tutulan ibadet nedir?",
-a:["Oruç","Hac","Zekât"],
-correct:0
-}
-
+["İslam'ın şartı kaçtır?",["4","5","6"],1],
+["Kur'an kaç sureden oluşur?",["110","114","120"],1],
+["Günde kaç vakit namaz vardır?",["3","5","7"],1],
+["Kur'an'ın ilk suresi hangisidir?",["Fatiha","Bakara","İhlâs"],0]
 ];
 
-var currentQuestion=0;
+var current=0;
 
 function newQuestion(){
 
-currentQuestion=
-Math.floor(Math.random()*questions.length);
+current=Math.floor(Math.random()*questions.length);
 
-var item=questions[currentQuestion];
+var q=questions[current];
 
-document.getElementById("question").textContent=item.q;
+document.getElementById("question").textContent=q[0];
 
 var box=document.getElementById("answers");
 
 box.innerHTML="";
 
-for(var i=0;i<item.a.length;i++){
+for(var i=0;i<q[1].length;i++){
 
-var btn=document.createElement("button");
+var b=document.createElement("button");
+b.className="btn";
+b.textContent=q[1][i];
 
-btn.className="btn";
-btn.textContent=item.a[i];
-
-btn.onclick=(function(x){
+b.onclick=(function(x){
 return function(){
-checkAnswer(x);
+if(x===questions[current][2]){
+document.getElementById("gameResult").innerHTML=
+"<span class='success'>✅ Doğru!</span>";
+}else{
+document.getElementById("gameResult").innerHTML=
+"❌ Yanlış!";
+}
 };
 })(i);
 
-box.appendChild(btn);
-
-}
-
-document.getElementById("gameResult").textContent="";
-
-}
-
-function checkAnswer(index){
-
-var item=questions[currentQuestion];
-
-if(index===item.correct){
-
-document.getElementById("gameResult").innerHTML=
-"<span class='success'>✅ Doğru cevap!</span>";
-
-}else{
-
-document.getElementById("gameResult").innerHTML=
-"<span class='error'>❌ Yanlış cevap.</span>";
+box.appendChild(b);
 
 }
 
 }
 
 
-/* NOTLAR */
+/* NOT */
 
 function saveNote(){
 
-var note=document.getElementById("note").value;
-
-localStorage.setItem("bedirhanNote",note);
+localStorage.setItem(
+"bedirhanNote",
+document.getElementById("note").value
+);
 
 document.getElementById("noteResult").innerHTML=
-"<span class='success'>✅ Not kaydedildi.</span>";
+"<span class='success'>✅ Kaydedildi.</span>";
 
 }
 
 function loadNote(){
 
-var note=localStorage.getItem("bedirhanNote") || "";
-
-document.getElementById("note").value=note;
-
-document.getElementById("noteResult").textContent=
-"📂 Not getirildi.";
+document.getElementById("note").value=
+localStorage.getItem("bedirhanNote")||"";
 
 }
 
 
-/* KARANLIK MOD */
-
-function loadTheme(){
-
-var dark=localStorage.getItem("darkMode");
-
-if(dark==="1"){
-document.body.classList.add("dark");
-}
-
-}
+/* TEMA */
 
 function toggleDark(){
 
-if(document.body.classList.contains("dark")){
+document.body.classList.toggle("dark");
 
-document.body.classList.remove("dark");
-localStorage.setItem("darkMode","0");
+localStorage.setItem(
+"darkMode",
+document.body.classList.contains("dark")?"1":"0"
+);
 
-}else{
+}
 
+function loadTheme(){
+
+if(localStorage.getItem("darkMode")==="1"){
 document.body.classList.add("dark");
-localStorage.setItem("darkMode","1");
-
 }
 
 }
 
 
-/* VERİ TEMİZLE */
+/* TEMİZLE */
 
 function clearData(){
 
-var ok=confirm(
-"Kayıtlı zikir, favori ve not verileri silinsin mi?"
-);
-
-if(!ok){
+if(!confirm("Kayıtlı veriler silinsin mi?")){
 return;
 }
 
-localStorage.removeItem("zikirCount");
-localStorage.removeItem("zikirTarget");
-localStorage.removeItem("totalZikir");
-localStorage.removeItem("favorites");
-localStorage.removeItem("bedirhanNote");
-
+localStorage.clear();
 count=0;
 
 renderSurahs();
-loadNote();
 updateZikir();
 
-alert("Kayıtlı veriler temizlendi.");
+alert("Veriler temizlendi.");
 
 }
 
 
-/* BAŞLANGIÇ */
+/* BAŞLAT */
 
 window.onload=function(){
 
 renderSurahs();
-
 loadZikir();
-
-loadNote();
-
 loadTheme();
-
 updateDate();
-
 newQuestion();
-
-updateHome();
 
 };
 
